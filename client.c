@@ -140,7 +140,7 @@ static void s_file (GtkButton *button, Widgets *w) {
 	/* Initializes server socket */
 	serv.sin_family = AF_INET;
         serv.sin_port = htons(8888);
-    	serv.sin_addr.s_addr = inet_addr("192.168.43.250");
+    	serv.sin_addr.s_addr = inet_addr(""); // local ip address
 
 	n = connect(s, (struct sockaddr*)&serv, (sizeof(serv)));
 	int f = open(buff, 0);
@@ -203,7 +203,7 @@ void client(const gchar* text)
 	s = socket(AF_INET, SOCK_STREAM, 0);
 	serv.sin_family = AF_INET;
     	serv.sin_port = htons(8888);
-		serv.sin_addr.s_addr = inet_addr("192.168.43.250");
+		serv.sin_addr.s_addr = inet_addr(""); // local ip address
 	n = connect(s, (struct sockaddr*)&serv, (sizeof(serv)));
 	buff = (char *)text;
 	strcpy(con, u_id);
@@ -251,7 +251,7 @@ void* client_1(void* params)
 		s = socket(AF_INET, SOCK_STREAM, 0);
 		serv.sin_family = AF_INET;
         	serv.sin_port = htons(8888);
-    		serv.sin_addr.s_addr = inet_addr("192.168.43.250");
+    		serv.sin_addr.s_addr = inet_addr(""); // local ip address
 		n = connect(s, (struct sockaddr *)&serv, (sizeof(serv)));
 		while(1) {
 			n = recv(s, (char*)ebuff, 255, 0);
